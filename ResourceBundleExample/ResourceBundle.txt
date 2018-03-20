@@ -1,0 +1,41 @@
+RESOURCE BUNDLE
+---------------
+
+What is Resource Bundle ?
+-------------------------
+java.util.ResourceBundle is a library used for internationalization (multiple languages). It is able to return messages as per the default Locale configured for the system. Such a functionality is used when one develops systems to be used all over the world.
+
+public abstract class ResourceBundle extends Object
+       --------
+	   
+
+
+How it Works ?
+-------------
+The library reads a property file based on the locale and name suffix used in the naming of the property. For example, consider a label file named MyLabels_en_US.properties. This file is read by ResourceBundle utility when the Locale is set to en_US which stands for US-English.
+
+Locale represents a region or location with its attributes. Locale is generally used to maintain details about the client using our application. Locale contains attributes of location and language to be used for the respective location. Thus, a Locale assists ResourceBundle to pick the right label file by determining the location to which the user belongs.
+
+Conventionally, the name of the properties file should be "filename_languagecode_country code" for example MyMessage_en_US.properties.
+														   ----------------------------------				
+														   
+Commonly used Methods:
+---------------------
+
+	public static ResourceBundle getBundle(String basename) 			   : returns the instance of the ResourceBundle class for the default locale.
+	public static ResourceBundle getBundle(String basename, Locale locale) : returns the instance of the ResourceBundle class for the specified locale.
+	public String getString(String key) 								   : returns the value for the corresponding key from this resource bundle.
+	
+Cache Management
+----------------
+Resource bundle instances created by the getBundle factory methods are cached by default, and the factory methods return the same resource bundle instance multiple times if it has been cached. getBundle clients may clear the cache, manage the lifetime of cached resource bundle instances using time-to-live values, or specify not to cache resource bundle instances. 
+
+public static final void clearCache(ClassLoader loader) : Removes all resource bundles from the cache that have been loaded using the given class loader.
+
+
+History:
+-------
+1. Present since Java 1.1
+2. Minor change in Java 1.2
+3. Major changes in Java 1.6
+4. Few changes in Java 1.8
