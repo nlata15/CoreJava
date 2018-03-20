@@ -1,0 +1,11 @@
+Steps for importing Java Projects into Eclipse which don't have  .project .classpath and .settings file:
+----------------------------------------------------------------------------------------------
+
+If you doesn't have .project .classpath and .settings file, Representing the project isn't eclipse project, so you should create a standard eclipse project
+you can following below step:
+
+1. Copy your project or open source project into workspace.
+2. File ->New -> Java Project -> Project name (Same as the one you need to import) -> Finish
+
+Remember config your source code location:
+Project -> Right Click -> Build Path -> Configure Build Path -> Source
