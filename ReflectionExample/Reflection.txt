@@ -1,0 +1,59 @@
+REFLECTION : 
+----------
+
+-- “Don’t use it unless you absolutely have to”
+
+-- used to inspect and modify runtime behavior of objects in an application, which means that it analyzes the structure of code and enables the programmer to change its expected behavior.
+
+-- it’s possible to change the accessibility of fields and methods.
+
+-- starting point of every Java Reflection operation is the ‘java.lang.Class’ class instance which represents the classes and interfaces in the Java application. 
+
+-- Java Virtual Machine creates an immutable instance of a ‘Class’ which provides the methods to analyze the runtime behavior of an object like creation, invoking methods, runtime properties of an object.
+
+-- java.lang.reflect
+
+-- Why was this concept introduced at first place ?
+	Annotations was introduced in Java 1.5 to provide metadata information of the class, methods or fields and now it’s heavily used in frameworks like Spring and Hibernate. 
+	Reflection API was also extended to provide support to analyze the annotations at runtime.
+
+Using reflection API we can analyze annotations whose retention policy is Runtime.
+-- Disadvantages :
+    (1) Poor Performance – Since java reflection resolve the types dynamically, it involves processing like scanning the classpath to find the class to load, causing slow performance.
+    (2) Security Restrictions – Reflection requires runtime permissions that might not be available for system running under security manager. This can cause you application to fail at runtime because of security manager.
+    (3) Security Issues – Using reflection we can access part of code that we are not supposed to access, for example we can access private fields of a class and change it’s value. This can be a serious security threat and cause your application to behave abnormally.
+    (4) High Maintenance – Reflection code is hard to understand and debug, also any issues with the code can’t be found at compile time because the classes might not be available, making it less flexible and hard to maintain.
+
+-- Use Cases/ Advantages of Reflection:
+	
+	Reflection in Java is a very powerful concept and it’s of little use in normal programming but 	it’s the backbone for most of the Java, J2EE frameworks. 
+	Some of the frameworks that use java reflection are:
+
+	(1) JUnit – uses reflection to parse @Test annotation to get the test methods and then invoke it.
+	(2) Spring Framework for creating the beans : DI framework actually heavily uses reflection for injecting these bean dependencies.
+						   Spring 3 onwards, you can define the dependencies using annotations as well, using autowiring. 
+						   Annotations are analyzed for dependencies injection using reflection only.
+	(3) Tomcat web container to forward the request to correct module by parsing their web.xml files and request URI.
+	(4) Eclipse (Other IDEs) auto completion of method names
+	(5) Struts
+	(6) Hibernate (Parsing annotations by ORMs) : ORMs like hibernate use the config files (not they use annotations) for defining the relationship between entities and relationship between entity and database schemas. 
+						  All this information is processed using java reflection capability.
+	(7) Code Analyzers : They do static analysis of syntax, show optimization tips and even report error conditions, and many more such things. 
+						 They are written in a way such that they can analyze any class file passed to them to analyze. 
+						 How can they do it without looking inside the class. Clearly, they use reflection to this analysis.
+	(8) Marshalling and unmarshalling : JAXB/Jattison and other marshalling/unmarshaling libraries heavily use reflection for XML (or JSON) to/from java beans code.
+						 They look up all annotated attributes in java bean, analyze their overall attributes and generate XML tags for them. 
+						 The same is valid for unmarshaling as well.
+
+
+--There are several possible ways to instantiate the class using Java Reflection. 
+	Most common of those are  via the:
+		(1) ‘newInstance’ method of ‘Class’  (reflectionExamlple01)
+		(2) ‘newInstance’ method of ‘Constructor’ object. (reflectionExamlple02)
+		
+-- Reference: 
+	(1)https://blog.udemy.com/java-reflection/
+	(2)https://www.journaldev.com/1789/java-reflection-example-tutorial
+	(3)https://howtodoinjava.com/java/reflection/real-usage-examples-of-reflection-in-java/
+	
+	

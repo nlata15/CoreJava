@@ -23,12 +23,12 @@ public class Book {
 	}
 
 	public void print() {
-		System.out.println("Name: " + this.name + " Version " + this.version);
+		System.out.println("Public Print:" + "\n" +"Name: " + this.name + " Version " + this.version + "  Publisher:" + this.yearOfPublish);
 	}
 
 	private void privatePrint() {
 
-		System.out.println("Name: " + this.name + " Version " + this.version + " Published in " + this.yearOfPublish);
+		System.out.println("Private Print:" + "\n" + "Name: " + this.name + " Version " + this.version + " Published in " + this.yearOfPublish);
 
 	}
 }
